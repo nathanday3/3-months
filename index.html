@@ -7,55 +7,81 @@
   <title>Happy 3 Months, Babe 🦒</title>
   <style>
     :root {
-      --bg1: #fff4f8;
-      --bg2: #ffd8e7;
-      --paper: rgba(255,255,255,.82);
-      --paper-solid: #fffdfd;
-      --text: #412531;
-      --muted: #785c68;
-      --accent: #f4649c;
-      --accent2: #9868e9;
-      --border: rgba(255,255,255,.72);
-      --shadow: 0 24px 70px rgba(84,31,54,.16);
+      --bg1: #eef7f6;
+      --bg2: #b7ddd7;
+      --paper: rgba(255,255,255,.88);
+      --paper-solid: #ffffff;
+      --text: #294340;
+      --muted: #56746f;
+      --accent: #5ca59a;
+      --accent2: #89cfc0;
+      --border: rgba(255,255,255,.75);
+      --shadow: 0 24px 70px rgba(39,74,71,.18);
     }
 
-    body[data-theme="night"] {
-      --bg1: #100d18;
-      --bg2: #32203e;
-      --paper: rgba(34,25,44,.84);
-      --paper-solid: #241b2d;
-      --text: #fff4fa;
-      --muted: #d8c2ce;
-      --accent: #ff77b6;
-      --accent2: #9d8cff;
-      --border: rgba(255,255,255,.09);
-      --shadow: 0 24px 75px rgba(0,0,0,.38);
+    body[data-theme="otter"] {
+      --bg1: #eef7f6;
+      --bg2: #b7ddd7;
+      --paper: rgba(255,255,255,.88);
+      --paper-solid: #ffffff;
+      --text: #294340;
+      --muted: #56746f;
+      --accent: #5ca59a;
+      --accent2: #89cfc0;
+      --border: rgba(255,255,255,.75);
+      --shadow: 0 24px 70px rgba(39,74,71,.18);
     }
 
-    body[data-theme="sunset"] {
-      --bg1: #fff2d8;
-      --bg2: #ffb4a2;
-      --paper: rgba(255,250,239,.84);
-      --paper-solid: #fffaf1;
-      --text: #542c28;
-      --muted: #855d54;
-      --accent: #ff6d6d;
-      --accent2: #f6a33d;
-      --border: rgba(255,255,255,.66);
-      --shadow: 0 24px 70px rgba(109,55,37,.18);
+    body[data-theme="dinosaur"] {
+      --bg1: #eef8e8;
+      --bg2: #9fd48d;
+      --paper: rgba(255,255,255,.88);
+      --paper-solid: #ffffff;
+      --text: #294321;
+      --muted: #587053;
+      --accent: #4ea63f;
+      --accent2: #8edc70;
+      --border: rgba(255,255,255,.75);
+      --shadow: 0 24px 70px rgba(37,69,28,.18);
     }
 
-    body[data-theme="ocean"] {
-      --bg1: #eefcff;
-      --bg2: #c5e5ff;
-      --paper: rgba(247,253,255,.84);
-      --paper-solid: #f9feff;
-      --text: #183846;
-      --muted: #537483;
-      --accent: #24a7ca;
-      --accent2: #7865e9;
-      --border: rgba(255,255,255,.76);
-      --shadow: 0 24px 70px rgba(27,91,116,.15);
+    body[data-theme="sealion"] {
+      --bg1: #edf8ff;
+      --bg2: #8ed3ef;
+      --paper: rgba(255,255,255,.88);
+      --paper-solid: #ffffff;
+      --text: #183b50;
+      --muted: #58758b;
+      --accent: #3f9bc9;
+      --accent2: #7fdcff;
+      --border: rgba(255,255,255,.75);
+      --shadow: 0 24px 70px rgba(27,92,123,.18);
+    }
+
+    body[data-theme="meerkat"] {
+      --bg1: #fff7df;
+      --bg2: #e9c483;
+      --paper: rgba(255,255,255,.88);
+      --paper-solid: #ffffff;
+      --text: #5b4123;
+      --muted: #876547;
+      --accent: #d39a3d;
+      --accent2: #f5cb74;
+      --border: rgba(255,255,255,.75);
+      --shadow: 0 24px 70px rgba(117,78,28,.18);
+    }
+
+    body[data-theme="giraffe"] {
+      --bg1: #fff2db;
+      --bg2: #dfaa64;
+      --paper: rgba(255,255,255,.88);
+      --paper-solid: #ffffff;
+      --text: #56361d;
+      --muted: #8a6344;
+      --accent: #c9782d;
+      --accent2: #f0b861;
+      --border: rgba(255,255,255,.75);
+      --shadow: 0 24px 70px rgba(119,70,27,.18);
     }
 
     * { box-sizing: border-box; }
@@ -104,25 +130,75 @@
     }
 
     .brand { font-weight: 900; letter-spacing: -.03em; }
-    .theme-switcher { display: flex; gap: 8px; }
+    .theme-switcher { display: flex; gap: 8px; flex-wrap: wrap; justify-content: flex-end; }
 
     .theme-dot {
-      width: 34px;
-      height: 34px;
+      width: 42px;
+      height: 42px;
       padding: 0;
-      border: 2px solid rgba(255,255,255,.8);
-      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,.82);
+      border-radius: 14px;
       cursor: pointer;
-      box-shadow: 0 6px 18px rgba(0,0,0,.13);
-      transition: transform .2s ease, outline .2s ease;
+      font-size: 1.35rem;
+      line-height: 1;
+      color: inherit;
+      background: color-mix(in srgb, var(--paper-solid) 74%, transparent);
+      box-shadow: 0 7px 20px rgba(0,0,0,.13);
+      backdrop-filter: blur(12px);
+      transition: transform .22s ease, outline .22s ease, box-shadow .22s ease, background .22s ease;
     }
 
-    .theme-dot:hover,
-    .theme-dot.active { transform: translateY(-2px) scale(1.08); outline: 2px solid color-mix(in srgb, var(--text) 35%, transparent); }
-    .theme-dot[data-theme-choice="rose"] { background: linear-gradient(135deg,#ff78ad,#ffd1e2); }
-    .theme-dot[data-theme-choice="night"] { background: linear-gradient(135deg,#15101f,#8c54bf); }
-    .theme-dot[data-theme-choice="sunset"] { background: linear-gradient(135deg,#ff7575,#ffc35f); }
-    .theme-dot[data-theme-choice="ocean"] { background: linear-gradient(135deg,#28a8cb,#8878ff); }
+    .theme-dot:hover {
+      transform: translateY(-3px) scale(1.1) rotate(-4deg);
+      box-shadow: 0 11px 24px rgba(0,0,0,.18);
+    }
+
+    .theme-dot.active {
+      transform: translateY(-2px) scale(1.08);
+      outline: 3px solid color-mix(in srgb, var(--accent) 52%, white);
+      background: color-mix(in srgb, var(--accent) 18%, var(--paper-solid));
+      animation: themePulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes themePulse {
+      0%,100% { box-shadow: 0 7px 20px rgba(0,0,0,.13); }
+      50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--accent) 14%, transparent), 0 11px 26px rgba(0,0,0,.16); }
+    }
+
+    .theme-burst {
+      position: fixed;
+      z-index: 220;
+      pointer-events: none;
+      animation: themeFloat var(--duration, 1.8s) ease-out forwards;
+      font-size: var(--size, 26px);
+      left: var(--left, 50vw);
+      top: var(--top, 50vh);
+      filter: drop-shadow(0 6px 8px rgba(0,0,0,.14));
+    }
+
+    @keyframes themeFloat {
+      0% { opacity: 0; transform: translate(-50%,-50%) scale(.45) rotate(0deg); }
+      20% { opacity: 1; }
+      100% { opacity: 0; transform: translate(var(--x, 0px), var(--y, -160px)) scale(1.25) rotate(var(--spin, 120deg)); }
+    }
+
+    body.theme-transition::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 180;
+      pointer-events: none;
+      background: color-mix(in srgb, var(--accent) 16%, transparent);
+      animation: themeFlash .58s ease;
+    }
+
+    @keyframes themeFlash {
+      0% { opacity: 0; }
+      35% { opacity: .7; }
+      100% { opacity: 0; }
+    }
 
     .hero {
       min-height: 88vh;
@@ -367,14 +443,15 @@
     }
   </style>
 </head>
-<body data-theme="rose">
+<body data-theme="otter">
   <nav class="topbar">
-    <div class="brand">Nathan + Jay · Chapter Three</div>
-    <div class="theme-switcher" aria-label="Choose a theme">
-      <button class="theme-dot active" data-theme-choice="rose" title="Rose" aria-label="Rose theme"></button>
-      <button class="theme-dot" data-theme-choice="night" title="Night" aria-label="Night theme"></button>
-      <button class="theme-dot" data-theme-choice="sunset" title="Sunset" aria-label="Sunset theme"></button>
-      <button class="theme-dot" data-theme-choice="ocean" title="Ocean" aria-label="Ocean theme"></button>
+    <div class="brand">Nathan + Jay</div>
+    <div class="theme-switcher" aria-label="Choose an animal theme">
+      <button class="theme-dot active" data-theme-choice="otter" title="Otter Mode" aria-label="Otter theme">🦦</button>
+      <button class="theme-dot" data-theme-choice="dinosaur" title="Dinosaur Mode" aria-label="Dinosaur theme">🦖</button>
+      <button class="theme-dot" data-theme-choice="sealion" title="Sea Lion Mode" aria-label="Sea lion theme">🦭</button>
+      <button class="theme-dot" data-theme-choice="meerkat" title="Meerkat Mode" aria-label="Meerkat theme">🐾</button>
+      <button class="theme-dot" data-theme-choice="giraffe" title="Giraffe Mode" aria-label="Giraffe theme">🦒</button>
     </div>
   </nav>
 
@@ -560,20 +637,60 @@
   <script>
     const body = document.body;
     const themeButtons = document.querySelectorAll('[data-theme-choice]');
+    const validThemes = ['otter','dinosaur','sealion','meerkat','giraffe'];
     const savedTheme = localStorage.getItem('threeMonthTheme');
+    const startingTheme = validThemes.includes(savedTheme) ? savedTheme : 'otter';
 
-    if (savedTheme) setTheme(savedTheme);
+    setTheme(startingTheme, false);
 
     themeButtons.forEach(button => {
-      button.addEventListener('click', () => setTheme(button.dataset.themeChoice));
+      button.addEventListener('click', () => setTheme(button.dataset.themeChoice, true));
     });
 
-    function setTheme(theme) {
+    function setTheme(theme, animate = true) {
+      if (!validThemes.includes(theme)) theme = 'otter';
+
       body.dataset.theme = theme;
       localStorage.setItem('threeMonthTheme', theme);
+
       themeButtons.forEach(button => {
         button.classList.toggle('active', button.dataset.themeChoice === theme);
       });
+
+      if (animate) {
+        body.classList.remove('theme-transition');
+        void body.offsetWidth;
+        body.classList.add('theme-transition');
+        setTimeout(() => body.classList.remove('theme-transition'), 650);
+        launchThemeEffect(theme);
+      }
+    }
+
+    function launchThemeEffect(theme) {
+      const themeSymbols = {
+        otter: ['🦦','🫧','💧'],
+        dinosaur: ['🦖','🌿','🍃'],
+        sealion: ['🦭','🫧','🌊'],
+        meerkat: ['🐾','✨','🏜️'],
+        giraffe: ['🦒','✨','🌿']
+      };
+
+      const symbols = themeSymbols[theme] || ['✨'];
+
+      for (let i = 0; i < 24; i++) {
+        const burst = document.createElement('span');
+        burst.className = 'theme-burst';
+        burst.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        burst.style.setProperty('--left', (Math.random() * 100) + 'vw');
+        burst.style.setProperty('--top', (18 + Math.random() * 64) + 'vh');
+        burst.style.setProperty('--x', ((Math.random() - .5) * 260) + 'px');
+        burst.style.setProperty('--y', (-90 - Math.random() * 190) + 'px');
+        burst.style.setProperty('--spin', ((Math.random() - .5) * 420) + 'deg');
+        burst.style.setProperty('--size', (18 + Math.random() * 20) + 'px');
+        burst.style.setProperty('--duration', (1.25 + Math.random() * 1.2) + 's');
+        document.body.appendChild(burst);
+        setTimeout(() => burst.remove(), 2800);
+      }
     }
 
     const modal = document.getElementById('photoModal');
