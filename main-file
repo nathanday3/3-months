@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ff7db8" />
+  <title>Happy 3 Months, Babe ❤️</title>
+  <style>
+    :root {
+      --bg-1: #fff2f7;
+      --bg-2: #ffd6e8;
+      --surface: rgba(255, 255, 255, 0.78);
+      --surface-solid: #ffffff;
+      --text: #4b2132;
+      --muted: #7a5161;
+      --accent: #ff6fae;
+      --accent-2: #9d6cff;
+      --border: rgba(255,255,255,.62);
+      --shadow: 0 24px 60px rgba(111, 35, 72, 0.16);
+      --radius: 28px;
+    }
+
+    body[data-theme="midnight"] {
+      --bg-1: #100d1d;
+      --bg-2: #2a1638;
+      --surface: rgba(37, 24, 50, 0.84);
+      --surface-solid: #291b36;
+      --text: #fff4fb;
+      --muted: #d3bdd0;
+      --accent: #ff79bb;
+      --accent-2: #9e8cff;
+      --border: rgba(255,255,255,.08);
+      --shadow: 0 24px 70px rgba(0,0,0,.34);
+    }
+
+    body[data-theme="sunset"] {
+      --bg-1: #fff3d9;
+      --bg-2: #ffb4a2;
+      --surface: rgba(255, 250, 239, .82);
+      --surface-solid: #fff9ef;
+      --text: #5b2a24;
+      --muted: #85544b;
+      --accent: #ff6b6b;
+      --accent-2: #ff9f43;
+      --border: rgba(255,255,255,.62);
+      --shadow: 0 24px 60px rgba(118, 54, 37, .18);
+    }
+
+    body[data-theme="ocean"] {
+      --bg-1: #e8fbff;
+      --bg-2: #b8dfff;
+      --surface: rgba(245, 253, 255, .82);
+      --surface-solid: #f7fdff;
+      --text: #183a4a;
+      --muted: #4e7587;
+      --accent: #2fa8cc;
+      --accent-2: #7b61ff;
+      --border: rgba(255,255,255,.7);
+      --shadow: 0 24px 60px rgba(22, 86, 116, .16);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255,255,255,.65), transparent 36%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2));
+      transition: background .45s ease, color .35s ease;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: .28;
+      background-image: radial-gradient(rgba(255,255,255,.75) 1px, transparent 1px);
+      background-size: 22px 22px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
+      z-index: -1;
+    }
+
+    button, a { font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 30;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      padding: 14px clamp(16px, 4vw, 42px);
+      backdrop-filter: blur(18px);
+      background: color-mix(in srgb, var(--surface) 88%, transparent);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .brand {
+      font-weight: 800;
+      letter-spacing: -.02em;
+      white-space: nowrap;
+    }
+
+    .theme-switcher {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .theme-dot {
+      width: 35px;
+      height: 35px;
+      border: 2px solid rgba(255,255,255,.65);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(0,0,0,.12);
+      transition: transform .2s ease;
+    }
+
+    .theme-dot:hover, .theme-dot.active { transform: translateY(-2px) scale(1.08); }
+    .theme-dot[data-set-theme="rose"] { background: linear-gradient(135deg,#ff7db8,#ffd6e8); }
+    .theme-dot[data-set-theme="midnight"] { background: linear-gradient(135deg,#151020,#8c4bbd); }
+    .theme-dot[data-set-theme="sunset"] { background: linear-gradient(135deg,#ff7a7a,#ffc56b); }
+    .theme-dot[data-set-theme="ocean"] { background: linear-gradient(135deg,#28a8cc,#8b7cff); }
+
+    .hero {
+      min-height: 88vh;
+      display: grid;
+      place-items: center;
+      padding: 88px 20px 70px;
+      text-align: center;
+      position: relative;
+    }
+
+    .hero-inner { max-width: 900px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+      border-radius: 999px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      backdrop-filter: blur(16px);
+      font-weight: 700;
+      color: var(--muted);
+    }
+
+    h1 {
+      font-size: clamp(3.2rem, 9vw, 7.2rem);
+      line-height: .92;
+      margin: 24px 0 20px;
+      letter-spacing: -.065em;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--accent), var(--accent-2));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+
+    .subtitle {
+      max-width: 680px;
+      margin: 0 auto 28px;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+      line-height: 1.65;
+    }
+
+    .hero-actions {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 14px 22px;
+      font-weight: 800;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: transform .2s ease, box-shadow .2s ease, background .25s ease;
+    }
+
+    .btn:hover { transform: translateY(-3px); }
+    .btn-primary { color: white; background: linear-gradient(135deg, var(--accent), var(--accent-2)); box-shadow: 0 14px 30px color-mix(in srgb, var(--accent) 38%, transparent); }
+    .btn-secondary { color: var(--text); background: var(--surface); border: 1px solid var(--border); backdrop-filter: blur(15px); }
+
+    main { width: min(1120px, calc(100% - 28px)); margin: 0 auto 70px; }
+
+    .section {
+      margin: 26px 0;
+      padding: clamp(24px, 4vw, 44px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(20px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .section::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 22%, transparent), transparent 65%);
+      top: -70px;
+      right: -60px;
+      pointer-events: none;
+    }
+
+    .section-heading { margin-bottom: 24px; }
+    .section h2 { margin: 0 0 8px; font-size: clamp(1.8rem, 4vw, 2.7rem); letter-spacing: -.04em; }
+    .section p { line-height: 1.7; }
+    .muted { color: var(--muted); }
+
+    .message-card {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .quote {
+      font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    .mini-card {
+      padding: 24px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 16%, var(--surface-solid)), color-mix(in srgb, var(--accent-2) 13%, var(--surface-solid)));
+      border: 1px solid var(--border);
+    }
+
+    .album-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .photo-card {
+      position: relative;
+      border: 0;
+      padding: 0;
+      background: none;
+      border-radius: 22px;
+      overflow: hidden;
+      aspect-ratio: 1 / 1;
+      cursor: pointer;
+      box-shadow: 0 12px 24px rgba(0,0,0,.13);
+      transform: translateZ(0);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .45s ease, filter .35s ease;
+    }
+
+    .photo-card::after {
+      content: attr(data-caption);
+      position: absolute;
+      inset: auto 0 0;
+      padding: 34px 14px 13px;
+      color: white;
+      font-weight: 750;
+      text-align: left;
+      background: linear-gradient(transparent, rgba(0,0,0,.75));
+      transform: translateY(25%);
+      opacity: 0;
+      transition: .3s ease;
+    }
+
+    .photo-card:hover img { transform: scale(1.08); filter: saturate(1.08); }
+    .photo-card:hover::after { transform: translateY(0); opacity: 1; }
+
+    .album-tip { margin-top: 16px; font-size: .95rem; color: var(--muted); }
+
+    .timeline {
+      display: grid;
+      gap: 16px;
+      position: relative;
+    }
+
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 48px 1fr;
+      gap: 14px;
+      align-items: start;
+      padding: 18px;
+      border-radius: 20px;
+      background: color-mix(in srgb, var(--surface-solid) 72%, transparent);
+      border: 1px solid var(--border);
+    }
+
+    .timeline-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 16px;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2));
+      color: white;
+      font-size: 1.25rem;
+    }
+
+    .timeline-item h3 { margin: 0 0 6px; }
+    .timeline-item p { margin: 0; color: var(--muted); }
+
+    .playlist-card {
+      display: grid;
+      grid-template-columns: 230px 1fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .album-cover {
+      aspect-ratio: 1;
+      border-radius: 24px;
+      display: grid;
+      place-items: center;
+      font-size: 4rem;
+      background:
+        linear-gradient(145deg, rgba(255,255,255,.25), transparent),
+        linear-gradient(135deg, var(--accent), var(--accent-2));
+      box-shadow: 0 18px 35px color-mix(in srgb, var(--accent) 32%, transparent);
+      color: white;
+    }
+
+    .track-list {
+      display: grid;
+      gap: 9px;
+      margin: 18px 0 22px;
+    }
+
+    .track {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 11px 13px;
+      border-radius: 14px;
+      background: color-mix(in srgb, var(--surface-solid) 72%, transparent);
+      border: 1px solid var(--border);
+    }
+
+    .track-number { width: 24px; color: var(--muted); font-weight: 800; }
+
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    .stat-card {
+      text-align: center;
+      border: 1px solid var(--border);
+      background: color-mix(in srgb, var(--surface-solid) 75%, transparent);
+      border-radius: 22px;
+      padding: 24px 16px;
+    }
+
+    .stat-value { font-size: 2.2rem; font-weight: 900; background: linear-gradient(90deg,var(--accent),var(--accent-2)); -webkit-background-clip: text; color: transparent; }
+    .stat-label { color: var(--muted); margin-top: 4px; }
+
+    .notes-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 12px; }
+    .note-btn {
+      min-height: 110px;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      background: color-mix(in srgb, var(--surface-solid) 74%, transparent);
+      color: var(--text);
+      cursor: pointer;
+      font-size: 2rem;
+      transition: .25s ease;
+    }
+    .note-btn:hover { transform: translateY(-5px) rotate(-1deg); box-shadow: 0 14px 26px rgba(0,0,0,.1); }
+
+    .reason-box { text-align: center; padding: 26px; border-radius: 22px; background: color-mix(in srgb, var(--surface-solid) 74%, transparent); border: 1px solid var(--border); }
+    #reason { min-height: 60px; font-size: 1.35rem; font-weight: 750; }
+
+    .finale { text-align: center; }
+    .finale h2 { font-size: clamp(2.4rem, 6vw, 4.2rem); }
+
+    footer { text-align: center; color: var(--muted); padding: 0 20px 48px; }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      display: none;
+      place-items: center;
+      padding: 20px;
+      background: rgba(9, 7, 13, .82);
+      backdrop-filter: blur(12px);
+      z-index: 100;
+    }
+
+    .modal.open { display: grid; }
+
+    .modal-content {
+      width: min(920px, 100%);
+      max-height: 92vh;
+      border-radius: 24px;
+      overflow: hidden;
+      background: var(--surface-solid);
+      box-shadow: 0 30px 90px rgba(0,0,0,.45);
+      position: relative;
+    }
+
+    .modal-content img { width: 100%; max-height: 72vh; object-fit: contain; background: #090909; }
+    .modal-caption { padding: 18px 64px 20px 20px; font-weight: 700; }
+    .modal-close {
+      position: absolute;
+      top: 14px;
+      right: 14px;
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      border: 0;
+      background: rgba(0,0,0,.62);
+      color: white;
+      cursor: pointer;
+      font-size: 1.2rem;
+      z-index: 2;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      transform: translate(-50%, 20px);
+      max-width: min(520px, calc(100% - 32px));
+      padding: 15px 18px;
+      border-radius: 16px;
+      background: #17131d;
+      color: white;
+      box-shadow: 0 18px 45px rgba(0,0,0,.28);
+      opacity: 0;
+      pointer-events: none;
+      transition: .3s ease;
+      z-index: 150;
+      text-align: center;
+    }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+    .floating { position: fixed; top: -30px; pointer-events: none; z-index: 90; animation: fall linear forwards; }
+    @keyframes fall { to { transform: translateY(110vh) rotate(420deg); opacity: 0; } }
+    @keyframes reveal { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+    .reveal { opacity: 0; transform: translateY(22px); }
+    .reveal.visible { animation: reveal .75s ease forwards; }
+
+    @media (max-width: 860px) {
+      .message-card, .playlist-card { grid-template-columns: 1fr; }
+      .album-cover { max-width: 240px; }
+      .album-grid { grid-template-columns: repeat(3,1fr); }
+      .stats-grid, .notes-grid { grid-template-columns: repeat(2,1fr); }
+    }
+
+    @media (max-width: 560px) {
+      .topbar { align-items: flex-start; }
+      .brand { padding-top: 8px; }
+      .theme-switcher { max-width: 180px; }
+      .hero { min-height: 80vh; padding-top: 70px; }
+      .album-grid { grid-template-columns: repeat(2,1fr); gap: 10px; }
+      .section { border-radius: 22px; }
+      .stats-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body data-theme="rose">
+  <nav class="topbar">
+    <div class="brand">Nathan + Jay · 3 Months</div>
+    <div class="theme-switcher" aria-label="Choose a theme">
+      <button class="theme-dot active" data-set-theme="rose" title="Rose" aria-label="Rose theme"></button>
+      <button class="theme-dot" data-set-theme="midnight" title="Midnight" aria-label="Midnight theme"></button>
+      <button class="theme-dot" data-set-theme="sunset" title="Sunset" aria-label="Sunset theme"></button>
+      <button class="theme-dot" data-set-theme="ocean" title="Ocean" aria-label="Ocean theme"></button>
+    </div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-inner">
+      <div class="eyebrow">❤️ Chapter Three</div>
+      <h1>Happy <span class="gradient-text">3 Months</span>, Babe</h1>
+      <p class="subtitle">Three months of Jay and Nathan: more pictures, more memories, more FaceTimes, and somehow even more reasons I like you.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="#letter">Open your surprise</a>
+        <a class="btn btn-secondary" href="#album">View our album</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section reveal" id="letter">
+      <div class="message-card">
+        <div>
+          <div class="section-heading">
+            <h2>My message to you</h2>
+            <p class="muted">A little update for month three.</p>
+          </div>
+          <p class="quote">I’m really grateful for these past three months with you. Even with distance, busy schedules, stress, and life being life, I still feel lucky that I get to call you mine. I love our laughs, our FaceTimes, our visits, and all the tiny moments that have become part of us. I know we are still at the beginning, but I am really happy that this beginning is with you.</p>
+        </div>
+        <div class="mini-card">
+          <p class="muted" style="margin-top:0;">Current relationship status</p>
+          <h3 style="font-size:2rem; margin:.2rem 0;">Boyfriend successfully upgraded</h3>
+          <p style="font-size:1.2rem; font-weight:800;">Version 3.0 · still extremely cute</p>
+          <p style="margin-bottom:0;">I LIKE you very, very much. ❤️</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="album">
+      <div class="section-heading">
+        <h2>Our photo album</h2>
+        <p class="muted">Click any photo to open it. Replace the image filenames and captions with your own memories.</p>
+      </div>
+
+      <div class="album-grid">
+        <button class="photo-card" data-caption="Our first favorite picture" data-full="photo1.jpeg"><img src="photo1.jpeg" alt="Memory 1"></button>
+        <button class="photo-card" data-caption="That day we could not stop laughing" data-full="photo2.jpeg"><img src="photo2.jpeg" alt="Memory 2"></button>
+        <button class="photo-card" data-caption="One of my favorite visits" data-full="photo3.jpeg"><img src="photo3.jpeg" alt="Memory 3"></button>
+        <button class="photo-card" data-caption="A very cute us moment" data-full="photo4.jpeg"><img src="photo4.jpeg" alt="Memory 4"></button>
+        <button class="photo-card" data-caption="The picture I keep looking at" data-full="photo5.jpeg"><img src="photo5.jpeg" alt="Memory 5"></button>
+        <button class="photo-card" data-caption="Proof we are adorable" data-full="photo6.jpeg"><img src="photo6.jpeg" alt="Memory 6"></button>
+        <button class="photo-card" data-caption="A memory I never want to forget" data-full="photo7.jpeg"><img src="photo7.jpeg" alt="Memory 7"></button>
+        <button class="photo-card" data-caption="Month three looks good on us" data-full="photo8.jpeg"><img src="photo8.jpeg" alt="Memory 8"></button>
+        <button class="photo-card" data-caption="Add another memory here" data-full="photo9.jpeg"><img src="photo9.jpeg" alt="Memory 9"></button>
+        <button class="photo-card" data-caption="Add another memory here" data-full="photo10.jpeg"><img src="photo10.jpeg" alt="Memory 10"></button>
+        <button class="photo-card" data-caption="Add another memory here" data-full="photo11.jpeg"><img src="photo11.jpeg" alt="Memory 11"></button>
+        <button class="photo-card" data-caption="Add another memory here" data-full="photo12.jpeg"><img src="photo12.jpeg" alt="Memory 12"></button>
+      </div>
+      <p class="album-tip">Tip: You can add more photo cards by copying one of the buttons above and changing the filename and caption.</p>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading">
+        <h2>Our month-three memories</h2>
+        <p class="muted">Replace these with exact dates, places, jokes, or moments from this month.</p>
+      </div>
+      <div class="timeline">
+        <div class="timeline-item"><div class="timeline-icon">📍</div><div><h3>Our favorite visit</h3><p>Write what you did, where you went, and the tiny detail you never want to forget.</p></div></div>
+        <div class="timeline-item"><div class="timeline-icon">📞</div><div><h3>The FaceTime that lasted forever</h3><p>Add the joke, conversation, or moment that made it memorable.</p></div></div>
+        <div class="timeline-item"><div class="timeline-icon">📸</div><div><h3>The picture of the month</h3><p>Explain why one photo became your favorite.</p></div></div>
+        <div class="timeline-item"><div class="timeline-icon">❤️</div><div><h3>August 4 — Three months</h3><p>Three months together, and still choosing you.</p></div></div>
+      </div>
+    </section>
+
+    <section class="section reveal" id="playlist">
+      <div class="playlist-card">
+        <div class="album-cover">🎧</div>
+        <div>
+          <div class="section-heading">
+            <h2>Our new playlist</h2>
+            <p class="muted">A new soundtrack for chapter three.</p>
+          </div>
+          <p>I made another playlist because apparently one was not enough. These songs made me think about you, us, missing you, seeing you again, and all the feelings I am pretending are completely normal.</p>
+          <div class="track-list">
+            <div class="track"><span class="track-number">01</span><span>Add your favorite song here</span></div>
+            <div class="track"><span class="track-number">02</span><span>Add the song that reminds you of him</span></div>
+            <div class="track"><span class="track-number">03</span><span>Add the song that feels like your relationship</span></div>
+          </div>
+          <!-- Replace the URL below with your new Spotify playlist link. -->
+          <a class="btn btn-primary" href="NEW_PLAYLIST_URL" target="_blank" rel="noopener">Open the playlist</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading"><h2>Relationship statistics</h2><p class="muted">Peer-reviewed and definitely scientifically accurate.</p></div>
+      <div class="stats-grid">
+        <div class="stat-card"><div class="stat-value">3</div><div class="stat-label">months together</div></div>
+        <div class="stat-card"><div class="stat-value">∞</div><div class="stat-label">times I miss you</div></div>
+        <div class="stat-card"><div class="stat-value">100%</div><div class="stat-label">would choose you again</div></div>
+        <div class="stat-card"><div class="stat-value">Illegal</div><div class="stat-label">amount of cute</div></div>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading"><h2>Hidden notes</h2><p class="muted">Click each one.</p></div>
+      <div class="notes-grid">
+        <button class="note-btn" data-note="I still smile when your name appears on my phone.">❤️</button>
+        <button class="note-btn" data-note="You are still my favorite notification.">💌</button>
+        <button class="note-btn" data-note="Distance is hard, but you are worth it.">🌙</button>
+        <button class="note-btn" data-note="I would choose you again. Obviously.">💕</button>
+        <button class="note-btn" data-note="You make ordinary days feel special.">✨</button>
+        <button class="note-btn" data-note="I love being able to call you my boyfriend.">🫶</button>
+        <button class="note-btn" data-note="You are weird in exactly the right way.">🍌</button>
+        <button class="note-btn" data-note="Month three looks very good on us.">📸</button>
+      </div>
+    </section>
+
+    <section class="section reveal">
+      <div class="section-heading"><h2>Reason generator</h2><p class="muted">For when you need a reminder.</p></div>
+      <div class="reason-box">
+        <p id="reason">Click the button for one reason I like you.</p>
+        <button class="btn btn-primary" id="reasonButton">Give me a reason</button>
+      </div>
+    </section>
+
+    <section class="section finale reveal">
+      <h2>Ready for month four?</h2>
+      <p class="muted">There is only one correct answer.</p>
+      <button class="btn btn-primary" id="yesButton">Yes, obviously</button>
+    </section>
+  </main>
+
+  <footer>Made by Nathan for Jay ❤️ · Three months and counting</footer>
+
+  <div class="modal" id="photoModal" aria-hidden="true">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close photo">✕</button>
+      <img id="modalImage" src="" alt="Expanded memory">
+      <div class="modal-caption" id="modalCaption"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script>
+    const body = document.body;
+    const themeButtons = document.querySelectorAll('[data-set-theme]');
+    const savedTheme = localStorage.getItem('threeMonthTheme');
+
+    if (savedTheme) setTheme(savedTheme);
+
+    themeButtons.forEach(button => {
+      button.addEventListener('click', () => setTheme(button.dataset.setTheme));
+    });
+
+    function setTheme(theme) {
+      body.dataset.theme = theme;
+      localStorage.setItem('threeMonthTheme', theme);
+      themeButtons.forEach(btn => btn.classList.toggle('active', btn.dataset.setTheme === theme));
+    }
+
+    const modal = document.getElementById('photoModal');
+    const modalImage = document.getElementById('modalImage');
+    const modalCaption = document.getElementById('modalCaption');
+
+    document.querySelectorAll('.photo-card').forEach(card => {
+      card.addEventListener('click', () => {
+        modalImage.src = card.dataset.full;
+        modalCaption.textContent = card.dataset.caption;
+        modal.classList.add('open');
+        modal.setAttribute('aria-hidden', 'false');
+      });
+    });
+
+    function closeModal() {
+      modal.classList.remove('open');
+      modal.setAttribute('aria-hidden', 'true');
+    }
+
+    document.getElementById('modalClose').addEventListener('click', closeModal);
+    modal.addEventListener('click', event => { if (event.target === modal) closeModal(); });
+    document.addEventListener('keydown', event => { if (event.key === 'Escape') closeModal(); });
+
+    const toast = document.getElementById('toast');
+    let toastTimer;
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 3200);
+    }
+
+    document.querySelectorAll('[data-note]').forEach(button => {
+      button.addEventListener('click', () => showToast(button.dataset.note));
+    });
+
+    const reasons = [
+      'Your laugh makes me happy.',
+      'You are genuinely so cute.',
+      'I love the way you make me feel close to you.',
+      'You make ordinary days feel special.',
+      'I like being yours.',
+      'You make me smile at my phone.',
+      'You are my favorite person to talk to.',
+      'You make distance feel worth it.',
+      'You are weird in a way I really like.',
+      'You are my man, obviously.',
+      'You make every visit feel too short.',
+      'You make me excited for what comes next.'
+    ];
+
+    document.getElementById('reasonButton').addEventListener('click', () => {
+      const reason = reasons[Math.floor(Math.random() * reasons.length)];
+      document.getElementById('reason').textContent = reason;
+    });
+
+    document.getElementById('yesButton').addEventListener('click', () => {
+      showToast('Correct answer. Month four is officially unlocked. ❤️');
+      celebrate();
+    });
+
+    function celebrate() {
+      const symbols = ['❤️','💕','✨','🌈','💌','🍌'];
+      for (let i = 0; i < 55; i++) {
+        const item = document.createElement('div');
+        item.className = 'floating';
+        item.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+        item.style.left = Math.random() * 100 + 'vw';
+        item.style.animationDuration = (Math.random() * 2.5 + 2.5) + 's';
+        item.style.fontSize = (Math.random() * 18 + 16) + 'px';
+        document.body.appendChild(item);
+        setTimeout(() => item.remove(), 5500);
+      }
+    }
+
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: .14 });
+
+    document.querySelectorAll('.reveal').forEach(section => observer.observe(section));
+  </script>
+</body>
+</html>
